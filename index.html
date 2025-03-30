@@ -1,6 +1,783 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harish - Full Stack Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-parallax-js/5.6.2/simpleParallax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .parallax-container {
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .text-shadow {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+    }
+    
+    .rotate-hover:hover {
+      transform: rotate(2deg);
+    }
+    
+    .gradient-text {
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    }
+    
+    .blur-bg {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    
+    .scroll-indicator {
+      animation: scrollIndicator 2s infinite;
+    }
+    
+    @keyframes scrollIndicator {
+      0% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(10px); opacity: 0.5; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white text-justify">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full" id="navbar">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center" style="background: rgb(11,16,26);
+background: linear-gradient(90deg, rgba(11,16,26,1) 0%, rgba(19,54,96,1) 47%, rgba(15,21,34,1) 79%);">
+      <a href="#hero" class="text-2xl font-bold gradient-text">Harish</a>
+      <div class="hidden md:flex space-x-8">
+        <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
+        <a href="#experience" class="hover:text-blue-400 transition-colors">Experience</a>
+        <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
+        <a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a>
+        <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+      </div>
+      <button class="md:hidden focus:outline-none" id="menu-toggle">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden bg-gray-800 bg-opacity-90 blur-bg" id="mobile-menu">
+      <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+        <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
+        <a href="#experience" class="hover:text-blue-400 transition-colors">Experience</a>
+        <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
+        <a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a>
+        <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="h-screen flex items-center justify-center parallax-container relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-60 z-10"></div>
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 opacity-20">
+        <div class="grid grid-cols-12 h-full">
+          <div class="col-span-4 border-r border-blue-500 opacity-30"></div>
+          <div class="col-span-4 border-r border-blue-500 opacity-30"></div>
+          <div class="col-span-4 border-r border-blue-500 opacity-30"></div>
+        </div>
+        <div class="grid grid-rows-6 h-full absolute inset-0">
+          <div class="row-span-1 border-b border-blue-500 opacity-30"></div>
+          <div class="row-span-1 border-b border-blue-500 opacity-30"></div>
+          <div class="row-span-1 border-b border-blue-500 opacity-30"></div>
+          <div class="row-span-1 border-b border-blue-500 opacity-30"></div>
+          <div class="row-span-1 border-b border-blue-500 opacity-30"></div>
+          <div class="row-span-1 border-b border-blue-500 opacity-30"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto px-4 z-20 text-center">
+      <h1 class="text-5xl md:text-7xl font-bold mb-4 text-shadow animate-float">Harish</h1>
+      <h2 class="text-2xl md:text-4xl mb-8 text-blue-400 text-shadow">Full Stack Developer</h2>
+      <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed">
+        Building robust and scalable web applications with modern technologies
+      </p>
+      <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
+        <a href="#about" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-full transition-colors">Discover More</a>
+        <a href="#contact" class="px-8 py-3 bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 rounded-full transition-colors">Get in Touch</a>
+      </div>
+    </div>
+    <div class="absolute top-0 right-0 h-full w-3/4 overflow-hidden z-0">
+      <div class="parallax-element w-full h-full bg-gradient-to-bl from-blue-800 via-blue-600 to-purple-800 opacity-30 rounded-bl-full transform translate-x-1/4 -translate-y-1/4"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-gray-800 relative overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <svg class="absolute -bottom-24 -right-24 w-96 h-96 text-blue-900 opacity-10" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="currentColor" d="M44.9,-76.2C59.7,-69.7,74,-60.4,81.7,-47C89.4,-33.6,90.6,-16.8,88.8,-1.1C87,14.7,82.2,29.4,74.5,42.5C66.8,55.6,56.2,67,43.1,74.9C30,82.8,15,87.1,0.4,86.5C-14.2,85.9,-28.5,80.4,-41.9,72.4C-55.3,64.5,-67.9,54.2,-77.1,41C-86.3,27.8,-92.1,14,-92.2,-0.1C-92.4,-14.1,-87,-28.3,-78.4,-40.2C-69.8,-52.1,-58,-61.8,-44.7,-68.9C-31.3,-76,-15.7,-80.4,-0.1,-80.2C15.5,-80,31,-82.7,44.9,-76.2Z" transform="translate(100 100)" />
+      </svg>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-3 gradient-text">About Me</h2>
+        <div class="w-20 h-1 bg-blue-500 mb-8"></div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          <div class="md:col-span-2">
+            <p class="text-lg leading-relaxed mb-6 ">
+              Full Stack Developer with 2 years of experience at Sify Technologies, specializing in developing robust and scalable web applications. Proficient in modern technologies, including the MERN and MEAN stacks, Next.js, Vue.js, and Python, with a strong interest in AI-driven solutions.
+            </p>
+            <p class="text-lg leading-relaxed mb-6">
+              A <span class="font-bold text-blue-400">DevOps enthusiast</span> dedicated to optimizing development workflows and delivering high-quality software.
+            </p>
+            <div class="flex flex-wrap gap-4 mt-8">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                </div>
+                <span>Chennai, India</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <span>Software Engineer</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                </div>
+                <span>BE in Computer Science</span>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="bg-gradient-to-tr from-blue-500 to-purple-600 rounded-lg p-1">
+              <div class="bg-gray-900 rounded-lg p-6">
+                <div class="w-full aspect-square rounded-full overflow-hidden mb-4">
+                  <img src="https://images.pexels.com/photos/147411/italy-mountains-dawn-daybreak-147411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Profile" class="w-full h-full object-cover" />
+                </div>
+                <div class="flex justify-center space-x-4 mt-4">
+                  <a href="https://linkedin.com/in/harish-m-9925a81b7/" target="_blank" class="text-gray-300 hover:text-blue-400">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                  <a href="https://github.com/harishhari131506" target="_blank" class="text-gray-300 hover:text-blue-400">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                    </svg>
+                  </a>
+                  <a href="https://harish-webdev.pages.dev/" target="_blank" class="text-gray-300 hover:text-blue-400">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm1 16.057v-3.3c.212.084.428.147.65.202 1.395.346 2.795.014 3.837-.82.36-.307.67-.665.907-1.078.166-.29.315-.595.406-.916.096-.322.15-.658.15-1.006 0-.348-.054-.683-.15-1.006-.09-.32-.24-.626-.407-.917-.237-.413-.547-.77-.907-1.078-1.043-.833-2.443-1.165-3.836-.82-.223.055-.438.118-.65.202v-3.22l-8 2.5v7.006l8 2.5z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="py-20 bg-gray-900 relative overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -left-20 top-1/4 w-40 h-40 bg-blue-600 rounded-full opacity-20 blur-3xl"></div>
+      <div class="absolute right-0 bottom-1/4 w-64 h-64 bg-purple-600 rounded-full opacity-20 blur-3xl"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-3 gradient-text">Education</h2>
+        <div class="w-20 h-1 bg-blue-500 mb-8"></div>
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg transform transition-all duration-300 hover:scale-102 card-hover">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-bold">BE in Computer Science</h3>
+            <span class="bg-blue-900 text-blue-200 px-3 py-1 rounded-full text-sm">Aug 2019 – Apr 2023</span>
+          </div>
+          <h4 class="text-lg text-blue-400 mb-4">Velammal Engineering College</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex items-center space-x-2">
+              <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>GPA: 8.58/10.0</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Coursework: DSA, Networking, Computational Theory, Computer Architecture</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-20 bg-gray-800">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3 gradient-text">Experience</h2>
+      <div class="w-20 h-1 bg-blue-500 mb-12"></div>
+      
+      <div class="max-w-4xl mx-auto relative">
+        <!-- Timeline Line -->
+        <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-blue-600 transform md:translate-x-px"></div>
+        
+        <!-- Job 1 -->
+        <div class="relative mb-16">
+          <div class="flex flex-col md:flex-row items-start">
+            <div class="md:w-1/2 pr-8 md:text-right order-2 md:order-1">
+              <div class="bg-gray-900 rounded-lg p-6 shadow-lg transform transition-all duration-300 card-hover">
+                <h3 class="text-xl font-bold mb-2">Software Engineer</h3>
+                <h4 class="text-blue-400 mb-4">Sify Technologies</h4>
+                <ul class="space-y-3">
+                  <li class="flex md:flex-row-reverse items-start">
+                    <div class="flex-1">
+                      Developed a full-stack, cutting-edge, multi-tenant e-learning web application integrating advanced AI features
+                    </div>
+                    <svg class="w-5 h-5 text-blue-500 mr-2 md:ml-2 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                  </li>
+                  <li class="flex md:flex-row-reverse items-start">
+                    <div class="flex-1">
+                      Successfully integrated a client-facing website into Adobe software, enabling seamless access to resources hosted on GCP servers
+                    </div>
+                    <svg class="w-5 h-5 text-blue-500 mr-2 md:ml-2 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="absolute left-0 md:left-1/2 w-8 h-8 rounded-full bg-blue-600 border-4 border-gray-900 transform -translate-x-1/2 flex items-center justify-center">
+              <span class="text-xs font-bold">1</span>
+            </div>
+            <div class="pl-12 md:pl-8 md:w-1/2 order-1 md:order-2 mb-8 md:mb-0">
+              <div class="bg-blue-900 text-blue-200 px-4 py-2 rounded-lg inline-block mb-2">July 2023 – Present</div>
+              <p class="text-gray-400">Tamil Nadu, India</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Job 2 -->
+        <div class="relative">
+          <div class="flex flex-col md:flex-row items-start">
+            <div class="pl-12 md:pl-8 md:w-1/2 order-1 md:order-1 mb-8 md:mb-0">
+              <div class="bg-blue-900 text-blue-200 px-4 py-2 rounded-lg inline-block mb-2">Jan 2022 – Mar 2022</div>
+              <p class="text-gray-400">Remote</p>
+            </div>
+            <div class="absolute left-0 md:left-1/2 w-8 h-8 rounded-full bg-blue-600 border-4 border-gray-900 transform -translate-x-1/2 flex items-center justify-center">
+              <span class="text-xs font-bold">2</span>
+            </div>
+            <div class="md:w-1/2 md:pl-8 order-2 md:order-2">
+              <div class="bg-gray-900 rounded-lg p-6 shadow-lg transform transition-all duration-300 card-hover">
+                <h3 class="text-xl font-bold mb-2">Data Scientist Intern</h3>
+                <h4 class="text-blue-400 mb-4">MIT Square</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <div class="flex-1">
+                          Worked on global agricultural datasets to develop predictive models for crop yield estimation.
+                        </div>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <div class="flex-1">
+                          Implemented machine learning algorithms to analyze weather patterns and their impact on agricultural output.
+                        </div>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        <div class="flex-1">
+                          Developed data visualizations to present insights from large datasets to stakeholders.
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </section>
+    
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 bg-gray-900 relative overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-0 right-0 w-80 h-80 bg-blue-600 rounded-full opacity-10 blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-80 h-80 bg-purple-600 rounded-full opacity-10 blur-3xl"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3 gradient-text">Skills</h2>
+      <div class="w-20 h-1 bg-blue-500 mb-12"></div>
+      
+      <div class="max-w-4xl mx-auto">
+        <!-- Skills Grid - Main Layout -->
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              
+              <!-- Technical Skills Column -->
+              <div class="bg-gray-900 bg-opacity-40 rounded-lg p-6 shadow-xl transform transition-all hover:shadow-2xl">
+                <h3 class="text-2xl font-bold mb-6 text-blue-400 border-b border-blue-400 pb-2">Technical Skills</h3>
+                
+                <!-- Frontend -->
+                <div class="mb-8">
+                  <h4 class="text-xl font-semibold mb-4 flex items-center">
+                    <span class="mr-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-300" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm11 1H6v8l4-2 4 2V6z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                    Frontend
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">TypeScript</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">React.js</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Next.js</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Angular</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Tailwind CSS</span>
+                  </div>
+                </div>
+                
+                <!-- Backend -->
+                <div class="mb-8">
+                  <h4 class="text-xl font-semibold mb-4 flex items-center">
+                    <span class="mr-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-300" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3 1h10v8H5V6z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                    Backend
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Node.js</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Express.js</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Python</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Flask</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Django</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">REST APIs</span>
+                  </div>
+                </div>
+                
+                <!-- Database -->
+                <div>
+                  <h4 class="text-xl font-semibold mb-4 flex items-center">
+                    <span class="mr-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-300" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
+                        <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
+                        <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
+                      </svg>
+                    </span>
+                    Database
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">MongoDB</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">MySQL</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">PostgreSQL</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Firebase</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- DevOps & Tools Column -->
+              <div class="bg-gray-900 bg-opacity-40 rounded-lg p-6 shadow-xl transform transition-all hover:shadow-2xl">
+                <h3 class="text-2xl font-bold mb-6 text-blue-400 border-b border-blue-400 pb-2">DevOps & Tools</h3>
+                
+                <!-- DevOps -->
+                <div class="mb-8">
+                  <h4 class="text-xl font-semibold mb-4 flex items-center">
+                    <span class="mr-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-300" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                    DevOps
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">AWS</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Docker</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">CI/CD</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Traefik</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Dokploy</span>
+                  </div>
+                </div>
+                
+                <!-- Tools -->
+                <div class="mb-8">
+                  <h4 class="text-xl font-semibold mb-4 flex items-center">
+                    <span class="mr-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-300" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.343c2.673 0 4.012-3.231 2.122-5.121l-4-4A1 1 0 0113 8.172V4.414l.707-.707A1 1 0 0013 2H7zm2 6.172V4h2v4.172a3 3 0 00.879 2.12l1.168 1.168a4 4 0 00-2.929.097l.869-.869A3 3 0 0010 8.172z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                    Tools & Methodologies
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Git</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Grafana</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Loki</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Prometheus</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Postman</span>
+                  </div>
+                </div>
+                
+                <!-- ML/AI -->
+                <div>
+                  <h4 class="text-xl font-semibold mb-4 flex items-center">
+                    <span class="mr-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-300" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path d="M17.83 4.372A8.001 8.001 0 0117 12.917v1.8l1.853.77A2.32 2.32 0 0118.16 18H1.84a2.32 2.32 0 01-.693-4.513L3 14.717v-1.8A8.001 8.001 0 012.17 4.37 5.998 5.998 0 0110 1.944a5.998 5.998 0 017.83 2.428z" />
+                      </svg>
+                    </span>
+                    AI & Machine Learning
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">TensorFlow</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">PyTorch</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">RAG</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Gen AI</span>
+                    <span class="px-4 py-2 bg-blue-900 bg-opacity-60 rounded-full text-sm font-medium transition duration-300 transform hover:scale-105 hover:bg-opacity-80 text-center">Data Analysis</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        <!-- Skill Bars Section -->
+        <div class="mt-16">
+          <h3 class="text-2xl font-bold mb-8 text-center text-blue-400">Core Competencies</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Left Column -->
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-semibold">Full Stack Development</span>
+                  <span>95%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                  <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2.5 rounded-full" style="width: 95%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-semibold">Frontend Development</span>
+                  <span>90%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                  <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2.5 rounded-full" style="width: 90%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-semibold">Backend Development</span>
+                  <span>88%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                  <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2.5 rounded-full" style="width: 88%"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-semibold">DevOps & Cloud Infrastructure</span>
+                  <span>85%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                  <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2.5 rounded-full" style="width: 85%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-semibold">Database Management</span>
+                  <span>82%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                  <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2.5 rounded-full" style="width: 82%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-semibold">Machine Learning & AI</span>
+                  <span>75%</span>
+                </div>
+                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                  <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2.5 rounded-full" style="width: 75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section Placeholder -->
+  <section id="projects" class="py-20 bg-gray-800">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3 gradient-text">Projects</h2>
+      <div class="w-20 h-1 bg-blue-500 mb-12"></div>
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-xl text-blue-400">Project section coming soon...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gray-900 relative overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-t from-blue-900 to-transparent opacity-10"></div>
+      <div class="absolute top-0 left-0 w-64 h-64 bg-purple-600 rounded-full opacity-10 blur-3xl"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3 gradient-text">Get In Touch</h2>
+      <div class="w-20 h-1 bg-blue-500 mb-12"></div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-blue-400">Contact Information</h3>
+            <div class="space-y-6">
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-1">Email</h4>
+                  <a href="mailto:harish@example.com" class="text-gray-300 hover:text-blue-400 transition-colors">harish@example.com</a>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-1">Phone</h4>
+                  <a href="tel:+919876543210" class="text-gray-300 hover:text-blue-400 transition-colors">+91 9876543210</a>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-1">Location</h4>
+                  <p class="text-gray-300">Chennai, Tamil Nadu, India</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-1">Social Profiles</h4>
+                  <div class="flex space-x-4 mt-2">
+                    <a href="https://linkedin.com/in/harish-m-9925a81b7/" target="_blank" class="text-gray-300 hover:text-blue-400 transition-colors">
+                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
+                    </a>
+                    <a href="https://github.com/harishhari131506" target="_blank" class="text-gray-300 hover:text-blue-400 transition-colors">
+                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                      </svg>
+                    </a>
+                    <a href="https://harish-webdev.pages.dev/" target="_blank" class="text-gray-300 hover:text-blue-400 transition-colors">
+                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm1 16.057v-3.3c.212.084.428.147.65.202 1.395.346 2.795.014 3.837-.82.36-.307.67-.665.907-1.078.166-.29.315-.595.406-.916.096-.322.15-.658.15-1.006 0-.348-.054-.683-.15-1.006-.09-.32-.24-.626-.407-.917-.237-.413-.547-.77-.907-1.078-1.043-.833-2.443-1.165-3.836-.82-.223.055-.438.118-.65.202v-3.22l-8 2.5v7.006l8 2.5z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contact Form -->
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-blue-400">Send Me a Message</h3>
+            <form class="space-y-6">
+              <div>
+                <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Your Name" required>
+              </div>
+              
+              <div>
+                <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Your Email" required>
+              </div>
+              
+              <div>
+                <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+                <input type="text" id="subject" name="subject" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Subject" required>
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Your Message" required></textarea>
+              </div>
+              
+              <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-medium transition-colors">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-gray-950 text-center">
+    <div class="container mx-auto px-4">
+      <p class="text-gray-400">&copy; 2025 Harish. All rights reserved.</p>
+      <div class="flex justify-center space-x-4 mt-4">
+        <a href="#hero" class="text-gray-400 hover:text-blue-400 transition-colors">Home</a>
+        <a href="#about" class="text-gray-400 hover:text-blue-400 transition-colors">About</a>
+        <a href="#experience" class="text-gray-400 hover:text-blue-400 transition-colors">Experience</a>
+        <a href="#projects" class="text-gray-400 hover:text-blue-400 transition-colors">Projects</a>
+        <a href="#skills" class="text-gray-400 hover:text-blue-400 transition-colors">Skills</a>
+        <a href="#contact" class="text-gray-400 hover:text-blue-400 transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('bg-gray-900', 'shadow-lg');
+      } else {
+        navbar.classList.remove('bg-gray-900', 'shadow-lg');
+      }
+    });
+
+    // Initialize Parallax
+    document.addEventListener('DOMContentLoaded', function() {
+      const parallaxElements = document.querySelectorAll('.parallax-element');
+      new simpleParallax(parallaxElements, {
+        scale: 1.5,
+        delay: 0.6,
+        transition: 'cubic-bezier(0,0,0,1)'
+      });
+
+      // GSAP Animations
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // Animate section headings
+      gsap.utils.toArray('.gradient-text').forEach(heading => {
+        gsap.from(heading, {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          scrollTrigger: {
+            trigger: heading,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          }
+        });
+      });
+    })
+    //   // Animate skill tags
+    //   gsap.utils.toArray('.bg-blue-900.bg-opacity-50').forEach((tag, i) => {
+    //     gsap.from(tag, {
+    //       opacity: 0,
+    //       y: 20,
+    //       duration: 0.5,
+    //       delay: i * 0.05,
+    //       scrollTrigger: {
+    //         trigger: '#skills',
+    //         start: "top 60%",
+    //       }
+    //     });
+    //   });
+    </script>
+
+    </body>
+    </html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>Harish | Personal Site</title>
@@ -338,4 +1115,4 @@
     })
   </script>
 </body>
-</html>
+</html> -->
