@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harish - The Developer you need </title>
+    <title>Harish - Creative Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -213,13 +213,13 @@
         padding: 2rem;
         z-index: 2;
         color: white;
-        transform: translateY(20px);
-        opacity: 0.8;
+        /* transform: translateY(20px); */
+        opacity: 1;
         transition: all 0.3s ease;
       }
 
       .project-card:hover .project-content {
-        transform: translateY(0);
+        transform: translateY(-10px);
         opacity: 1;
       }
 
@@ -697,7 +697,6 @@
         </h2>
 
         <div class="timeline ml-4 md:ml-10">
-          <!-- Sify Experience -->
           <div class="timeline-item" data-year="2023-Present">
             <div class="timeline-dot"></div>
             <div class="p-6 rounded-lg shadow-lg bg-white">
@@ -735,7 +734,6 @@
             </div>
           </div>
 
-          <!-- Internship Experience -->
           <div class="timeline-item" data-year="2022">
             <div class="timeline-dot"></div>
             <div class="p-6 rounded-lg shadow-lg bg-white">
@@ -769,7 +767,6 @@
             </div>
           </div>
 
-          <!-- Education -->
           <div class="timeline-item" data-year="2019-2023">
             <div class="timeline-dot"></div>
             <div class="p-6 rounded-lg shadow-lg bg-white">
@@ -810,12 +807,66 @@
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <!-- Project 1 -->
+
+            
           <div class="project-card group">
             <div class="h-80 bg-gray-900 overflow-hidden">
-              <!-- Replace with actual project image -->
               <div
-                class="w-full h-full bg-gradient-to-br from-purple-500 to-indigo-700 group-hover:scale-110 transition-transform duration-700 flex items-center justify-center p-6 text-center"
+                class="w-full h-full bg-gradient-to-br from-accent to-amber-500  group-hover:scale-110 transition-transform duration-700 flex items-center justify-center p-6 text-center"
+              >
+          
+              </div>
+            </div>
+            <div class="project-content">
+              <h3 class="text-2xl font-bold mb-2">
+                EventDesk
+              </h3>
+              <p class="mb-4 text-white/80">
+                EventDesk is  designed to simplify event planning and management. This platform enables vendors, admins, and users to collaboratively manage events, track progress, and handle requirements efficiently. 
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-2 py-1 bg-white/20 rounded">Angular</span>
+                <span class="text-xs px-2 py-1 bg-white/20 rounded">Node js</span>
+                <span class="text-xs px-2 py-1 bg-white/20 rounded"
+                  >Keycloak</span>
+                  <span class="text-xs px-2 py-1 bg-white/20 rounded">Stripe</span>
+                  <span class="text-xs px-2 py-1 bg-white/20 rounded">Dokploy</span>
+                  <span class="text-xs px-2 py-1 bg-white/20 rounded">Grafana</span>
+                  <span class="text-xs px-2 py-1 bg-white/20 rounded">Docker</span>
+              </div>
+
+              <a
+                href="https://eventdesk.io"
+                target="_blank"
+                class="relative cursor-pointer py-4 px-8 text-center font-barlow inline-flex justify-center text-base uppercase text-white rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 overflow-hidden"
+              >
+                <span class="relative z-20">View Project</span>
+
+                <span
+                  class="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"
+                ></span>
+
+                <span
+                  class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-tl-lg border-l-2 border-t-2 top-0 left-0"
+                ></span>
+                <span
+                  class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-2 border-t-2 top-0 right-0"
+                ></span>
+                <span
+                  class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[60%] group-hover:h-[90%] rounded-bl-lg border-l-2 border-b-2 left-0 bottom-0"
+                ></span>
+                <span
+                  class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-br-lg border-r-2 border-b-2 right-0 bottom-0"
+                ></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card group">
+            <div class="h-80 bg-gray-900 overflow-hidden">
+              <div
+                class="w-full h-full bg-gradient-to-br from-pink-500 to-red-400
+                group-hover:scale-110 transition-transform duration-700 flex items-center justify-center p-6 text-center"
               >
                 <!-- <h3 class="text-white text-2xl font-bold">Auction Web App + Style Transfer</h3> -->
               </div>
@@ -864,12 +915,13 @@
             </div>
           </div>
 
-          <!-- Project 2 -->
+
           <div class="project-card group">
             <div class="h-80 bg-gray-900 overflow-hidden">
               <!-- Replace with actual project image -->
               <div
-                class="w-full h-full bg-gradient-to-br from-accent to-amber-500 group-hover:scale-110 transition-transform duration-700 flex items-center justify-center p-6 text-center"
+                class="w-full h-full bg-gradient-to-br from-indigo-500 to-fuchsia-400
+                group-hover:scale-110 transition-transform duration-700 flex items-center justify-center p-6 text-center"
               >
                 <!-- <h3 class="text-white text-2xl font-bold">AI-Powered Nutrition Analyzer</h3> -->
               </div>
@@ -917,6 +969,61 @@
               </a>
             </div>
           </div>
+
+    
+
+          <!-- <div class="project-card group">
+            <div class="h-80 bg-gray-900 overflow-hidden">
+              <div
+                class="w-full h-full bg-gradient-to-br from-amber-500 to-pink-400 group-hover:scale-110 transition-transform duration-700 flex items-center justify-center p-6 text-center"
+              >
+               
+              </div>
+            </div>
+            <div class="project-content">
+              <h3 class="text-2xl font-bold mb-2">Skillflo</h3>
+              <p class="mb-4 text-white/80">
+                An Elearning web application.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-2 py-1 bg-white/20 rounded"
+                  >Python</span
+                >
+                <span class="text-xs px-2 py-1 bg-white/20 rounded"
+                  >TensorFlow</span
+                >
+                <span class="text-xs px-2 py-1 bg-white/20 rounded">Flask</span>
+              </div>
+
+              <a
+                href="https://github.com/harishhari131506/Ai-Powered-Nutrition-fitness-analyzer"
+                target="_blank"
+                class="relative cursor-pointer py-4 px-8 text-center font-barlow inline-flex justify-center text-base uppercase text-white rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 overflow-hidden"
+              >
+                <span class="relative z-20">View Project</span>
+
+                <span
+                  class="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"
+                ></span>
+
+                <span
+                  class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-tl-lg border-l-2 border-t-2 top-0 left-0"
+                ></span>
+                <span
+                  class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-2 border-t-2 top-0 right-0"
+                ></span>
+                <span
+                  class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[60%] group-hover:h-[90%] rounded-bl-lg border-l-2 border-b-2 left-0 bottom-0"
+                ></span>
+                <span
+                  class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-br-lg border-r-2 border-b-2 right-0 bottom-0"
+                ></span>
+              </a>
+            </div>
+          </div> -->
+
+
+
         </div>
       </div>
     </section>
@@ -931,6 +1038,20 @@
         <div class="marquee mb-16">
           <div class="marquee-content">
             <div class="flex space-x-8">
+                <span class="text-6xl font-bold opacity-10">Dokploy</span>
+                <span class="text-6xl font-bold opacity-10">LOKI</span>
+                <span class="text-6xl font-bold opacity-10">Postgres sql</span>
+                <span class="text-6xl font-bold opacity-10">Traefik</span>
+                <span class="text-6xl font-bold opacity-10">Stripe</span>
+                <span class="text-6xl font-bold opacity-10">Keycloak</span>
+                <span class="text-6xl font-bold opacity-10">Prometheous</span>
+                <span class="text-6xl font-bold opacity-10">Grafana</span>
+                <span class="text-6xl font-bold opacity-10">RAG</span>
+                <span class="text-6xl font-bold opacity-10">ChromaDB</span>
+                <span class="text-6xl font-bold opacity-10">Agentic Systems</span>
+                <span class="text-6xl font-bold opacity-10">LLM's</span>
+                <span class="text-6xl font-bold opacity-10">SLM's</span>
+              
               <span class="text-6xl font-bold opacity-10">JavaScript</span>
               <span class="text-6xl font-bold opacity-10">Python</span>
               <span class="text-6xl font-bold opacity-10">React</span>
@@ -941,16 +1062,8 @@
               <span class="text-6xl font-bold opacity-10">AWS</span>
               <span class="text-6xl font-bold opacity-10">Docker</span>
               <span class="text-6xl font-bold opacity-10">Next.js</span>
-              <span class="text-6xl font-bold opacity-10">JavaScript</span>
-              <span class="text-6xl font-bold opacity-10">Python</span>
-              <span class="text-6xl font-bold opacity-10">React</span>
-              <span class="text-6xl font-bold opacity-10">Angular</span>
-              <span class="text-6xl font-bold opacity-10">Node.js</span>
-              <span class="text-6xl font-bold opacity-10">Express</span>
-              <span class="text-6xl font-bold opacity-10">MongoDB</span>
-              <span class="text-6xl font-bold opacity-10">AWS</span>
-              <span class="text-6xl font-bold opacity-10">Docker</span>
-              <span class="text-6xl font-bold opacity-10">Next.js</span>
+              <span class="text-6xl font-bold opacity-10">Kubernetes</span>
+      
             </div>
           </div>
         </div>
@@ -1001,14 +1114,14 @@
             </h3>
             <div class="flex flex-wrap gap-3">
               <span class="skill-tag">AWS</span>
+              <span class="skill-tag">Keycloak</span>
+              <span class="skill-tag">Grafana</span>
+              <span class="skill-tag">Stripe</span>
               <span class="skill-tag">Docker</span>
               <span class="skill-tag">GCP</span>
               <span class="skill-tag">MongoDB</span>
               <span class="skill-tag">PostgreSQL</span>
-              <span class="skill-tag">CI/CD</span>
               <span class="skill-tag">Git</span>
-              <span class="skill-tag">Figma</span>
-              <span class="skill-tag">Serverless</span>
             </div>
           </div>
         </div>
@@ -1039,6 +1152,17 @@
                 Workato platform.
               </p>
             </div>
+
+            <div
+            class="p-6 rounded-lg bg-accent/10 border border-accent/30 max-w-xs text-center"
+          >
+            <h4 class="text-xl font-bold mb-3" style="color: grey ; font-weight: bolder;">
+              Google certified Data Analyst
+            </h4>
+            <p class="text-muted">
+              Certified in Data analysis using python , tableau by google
+            </p>
+          </div>
           </div>
         </div>
       </div>
@@ -1242,7 +1366,7 @@
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <div class="mb-6 md:mb-0">
-            <h2 class="text-2xl font-bold">Harish</h2>
+            <h2 class="text-2xl font-bold text-black">Harish</h2>
             <p class="text-gray-400 mt-2">Full Stack Developer</p>
           </div>
           <div class="flex space-x-6">
@@ -1319,7 +1443,7 @@
           </div>
         </div>
         <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p class="text-gray-400">&copy; 2023 Harish. All rights reserved.</p>
+          <p class="text-gray-400">&copy; Harish. All rights reserved.</p>
         </div>
       </div>
     </footer>
